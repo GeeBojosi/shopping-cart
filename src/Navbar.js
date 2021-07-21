@@ -4,6 +4,7 @@ import './Navbar.css';
 
 export default class Navbar extends Component {
   render() {
+    console.log(this.props.itemsNumber);
     return (
       <div className='Navbar'>
         <Link className='Navbar-title' to='/'>
@@ -17,7 +18,7 @@ export default class Navbar extends Component {
             Shop
           </NavLink>
           <NavLink activeClassName='active-link' to='/cart'>
-            Cart
+            Cart - {this.props.itemsNumber}
           </NavLink>
         </div>
       </div>
