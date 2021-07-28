@@ -4,7 +4,6 @@ import './Navbar.css';
 
 export default class Navbar extends Component {
   render() {
-    console.log(this.props.itemsNumber);
     return (
       <div className='Navbar'>
         <Link className='Navbar-title' to='/'>

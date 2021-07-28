@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CartSummary from './CartSummary';
+import CartItem from './CartItem';
 import './Cart.css';
 
 function empty() {
@@ -7,41 +8,18 @@ function empty() {
 }
 
 export default class Cart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      qty: this.props.quantity,
-    };
-    this.increment = this.increment.bind(this);
-  }
-
-  increment() {
-    this.setState({
-      qty: this.state.qty + 1,
-    });
-  }
-
-  handleIncrement() {
-    this.increment();
-  }
-
-  // decrement() {}
-
   render() {
     const items = this.props.items.map(item => (
-      <div className='Cart-item'>
-        <p>{item.name}</p>
-        <p>{item.price}</p>
-        <button>-</button>
-        <input
-          type='number'
-          value={this.state.qty}
-          onChange={this.handleIncrement}
-        />
-        <button onClick={this.increment}>+</button>
-        <br />
-        <button>Remove</button>
-      </div>
+      <CartItem
+        id={item.id}
+        name={item.name}
+        price={item.price}
+        image={item.image}
+        quantity={item.qty}
+        key={item.id}
+        updateQuantity={this.props.updateQuantity}
+        deleteItem={this.props.deleteItem}
+      />
     ));
     return (
       <div className='Cart'>
@@ -50,7 +28,7 @@ export default class Cart extends Component {
         ) : (
           <div className='Cart-items'>
             <div className='Cart-items-1'>{items}</div>
-            <CartSummary total={this.props.items.length} />
+            <CartSummary itemInfo={this.props} />
           </div>
         )}
       </div>

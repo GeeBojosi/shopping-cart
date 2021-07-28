@@ -11,36 +11,42 @@ const products = [
     price: 119.99,
     image: prod1,
     id: 1,
+    qty: 1,
   },
   {
     name: 'Suit 47',
     price: 1199.5,
     image: prod2,
     id: 2,
+    qty: 1,
   },
   {
     name: 'Plain white-T',
     price: 99.99,
     image: prod3,
     id: 3,
+    qty: 1,
   },
   {
     name: 'Style Shoes',
     price: 899.99,
     image: prod4,
     id: 4,
+    qty: 1,
   },
   {
     name: 'T-shirts',
     price: 99.99,
     image: prod5,
     id: 5,
+    qty: 1,
   },
   {
     name: 'Stylish Jeans',
     price: 299.99,
     image: prod6,
     id: 6,
+    qty: 1,
   },
 ];
 

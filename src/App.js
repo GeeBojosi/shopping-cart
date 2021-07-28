@@ -13,34 +13,55 @@ class App extends Component {
     super(props);
     this.state = {
       cart: [],
-      qty: 0,
     };
     this.addToCart = this.addToCart.bind(this);
+    this.update = this.update.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   addToCart(id) {
     const item = products.find(product => product.id === id);
-    this.setState(st => ({
-      cart: [...st.cart, item],
-    }));
+    const itemExists = this.state.cart.map(cItem => cItem.id).includes(id);
+    if (itemExists) {
+      this.update(id, 1);
+    } else {
+      this.setState(st => ({
+        cart: [...st.cart, item],
+      }));
+    }
+  }
+
+  update(id, newValue) {
+    const updatedCart = this.state.cart.map(item =>
+      item.id === id ? { ...item, qty: item.qty + newValue } : item
+    );
+
+    this.setState({
+      cart: updatedCart,
+    });
+  }
+
+  deleteItem(id) {
+    this.setState({
+      cart: this.state.cart.filter(item => item.id !== id),
+    });
   }
 
   render() {
-    console.log(products);
     const getCurrentItem = props => {
       let name = props.match.params.name;
       let currentItem = products.find(
         item => item.name.toLowerCase() === name.toLowerCase()
       );
-      console.log(props);
       return (
         <ItemDetails {...props} item={currentItem} addToCart={this.addToCart} />
       );
     };
 
+    const totalNoItem = this.state.cart.reduce((a, b) => a + b.qty, 0);
     return (
       <div className='App'>
-        <Navbar itemsNumber={this.state.cart.length} />
+        <Navbar itemsNumber={totalNoItem} />
         <Switch>
           <Route exact path='/' render={() => <Home />} />
           <Route
@@ -59,7 +80,11 @@ class App extends Component {
             exact
             path='/cart'
             render={() => (
-              <Cart items={this.state.cart} quantity={this.state.qty} />
+              <Cart
+                items={this.state.cart}
+                updateQuantity={this.update}
+                deleteItem={this.deleteItem}
+              />
             )}
           />
         </Switch>

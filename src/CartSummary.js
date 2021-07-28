@@ -1,5 +1,20 @@
-export default function CartSummary({ total }) {
-  // console.log(props);
+export default function CartSummary(props) {
+  console.log(props.itemInfo.items);
+  const quantity = props.itemInfo.items.reduce((total, currentVal) => {
+    return total + currentVal.qty;
+  }, 0);
+
+  const filtered = [];
+
+  for (let item of props.itemInfo.items) {
+    let results = item.qty * item.price;
+    filtered.push(results);
+  }
+
+  const totalPrice = filtered.reduce((total, currentValue) => {
+    return total + currentValue;
+  });
+
   return (
     <div
       style={{
@@ -11,7 +26,8 @@ export default function CartSummary({ total }) {
         position: 'static',
       }}>
       <h1>Cart Summary</h1>
-      <p>Total: {total} items</p>
+      <p>Total: ({quantity} items)</p>
+      <p>Price: {`R ${totalPrice.toFixed(2)}`}</p>
       <button>Checkout</button>
     </div>
   );

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './ItemCard.css';
 
 export default class ItemCard extends Component {
@@ -28,9 +27,10 @@ export default class ItemCard extends Component {
           className='ItemCard-image'
         />
         <p className='ItemCard-info'>{this.props.name}</p>
-        <p className='ItemCard-info'>{this.props.price}</p>
-        <button onClick={this.handleAdd}>Add to cart</button>
-        <button>Favorite</button>
+        <p className='ItemCard-info'>R{this.props.price}</p>
+        <div className='ItemCard-buttons'>
+          <button onClick={this.handleAdd}>Add to cart</button>
+        </div>
       </div>
     );
   }
