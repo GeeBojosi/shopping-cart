@@ -1,5 +1,7 @@
 .CartItem {
+  width: 300px;
   margin-top: 2rem;
+  margin-bottom: 1rem;
   padding-bottom: 0.98rem;
   padding-right: 5rem;
   padding-left: 0.5rem;
@@ -22,6 +24,7 @@
 .CartItem-input {
   width: 50px;
   padding: 0.5rem;
+  border: none;
 }
 
 .CartItem-buttons {
@@ -36,9 +39,15 @@
   background: #cccccc;
 }
 
-/* button:disabled,
-button[disabled] {
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666; */
-/* } */
+.CartItem-remove {
+  background: red;
+  color: #fafafa;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  border: none;
+}
+
+.CartItem-remove:hover {
+  cursor: pointer;
+  background: rgb(172, 5, 5);
+}

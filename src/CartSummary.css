@@ -1,0 +1,38 @@
+.CartSummary {
+  background: #fafafa;
+  box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
+  height: 145px;
+  width: 70%;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  padding-left: 0.5rem;
+  padding-bottom: 2.8rem;
+}
+
+.CartSummary h1 {
+  margin-top: 0.1rem;
+  color: #5a5a5a;
+}
+
+.CartSummary p {
+  font-weight: 600;
+  color: #5a5a5a;
+}
+
+.CartSummary button {
+  background: limegreen;
+  color: #fafafa;
+  border: none;
+  padding: 0.5rem;
+}
+
+.CartSummary button:hover {
+  cursor: pointer;
+  background: darkgreen;
+}
+/* border: '1px solid red',
+height: '145px',
+width: '70%',
+marginTop: '2rem',
+marginLeft: '2rem',
+position: 'static', */

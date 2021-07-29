@@ -47,7 +47,9 @@ export default class CartItem extends Component {
           +
         </button>
         <br />
-        <button onClick={this.handleRemove}>Remove</button>
+        <button className='CartItem-remove' onClick={this.handleRemove}>
+          Remove
+        </button>
       </div>
     );
   }
